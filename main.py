@@ -2,14 +2,18 @@ from matching import _match
 from ultralytics import YOLO
 from track import Track
 import cv2
+import os
 
 def main():
 
     # Load the model
     model = YOLO('yolov8n.pt') 
 
+    sequence_path = "dataset/MOT15/train/TUD-Stadtmitte/img1"
+
     # Open the video source
-    cap = cv2.VideoCapture("dataset/Venice-2-raw.webm")
+    pattern = os.path.join(sequence_path, "%06d.jpg") # Selon le nommage
+    cap = cv2.VideoCapture(pattern)
     # cap = cv2.VideoCapture(0) # 0 = webcam
 
     if not cap.isOpened():
