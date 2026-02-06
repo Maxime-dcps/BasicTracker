@@ -40,3 +40,4 @@ ultralytics/
 
 # MOT15
 MOT15/
+results/*
