@@ -20,8 +20,8 @@ def tracker_run(sequence_path = "dataset/MOT15/train/PETS09-S2L1/img1", res_path
 
     tracks = [] # No tracks at the beginning
     next_ID = 1
-    max_losses = 5  # number of frames without detection before deleting the track
-    min_hits = 3    # number of detections before considering the track as confirmed
+    max_losses = 3  # number of frames without detection before deleting the track
+    min_hits = 2    # number of detections before considering the track as confirmed
     frame_ID = 1
 
     if export_result:
@@ -38,7 +38,7 @@ def tracker_run(sequence_path = "dataset/MOT15/train/PETS09-S2L1/img1", res_path
         # Run detection on the frame
         # classes = 0 to detect only people
         # conf = 0.5 to avoid false detections
-        results = model.predict(frame, classes = 0, conf = 0.5, verbose = False)[0]
+        results = model.predict(frame, classes = 0, conf = 0.45, verbose = False)[0]
 
 
 

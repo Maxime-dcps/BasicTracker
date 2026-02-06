@@ -12,8 +12,9 @@ class Track:
         cy = (y1 + y2) / 2
         w = x2 - x1
         h = y2 - y1
+        r = h / w
         
-        self.kf.x[:2] = np.array([[cx], [cy]])
+        self.kf.x[:4] = np.array([[cx], [cy], [h], [r]])
         self.width = w    # Store the width
         self.height = h   # Store the height
         
@@ -28,10 +29,14 @@ class Track:
         x1, y1, x2, y2 = detection
         cx = (x1 + x2) / 2
         cy = (y1 + y2) / 2
-        self.width = x2 - x1
-        self.height = y2 - y1
+        w = x2 - x1
+        h = y2 - y1
+        r = h / w
+
+        self.width = w
+        self.height = h
         
-        z = np.array([[cx], [cy]])
+        z = np.array([[cx], [cy], [h], [r]])
         # Update Kalman filter with BBox center
         self.kf.update(z)
 
@@ -39,11 +44,11 @@ class Track:
         self.no_losses += 1
 
     def get_bbox(self):
-        cx, cy = self.kf.x[0, 0], self.kf.x[1, 0]
+        cx, cy, h, r = self.kf.x[0, 0], self.kf.x[1, 0], self.kf.x[2,0], self.kf.x[3,0]
         x1 = cx - self.width / 2
-        y1 = cy - self.height / 2
+        y1 = cy - h / 2
         x2 = cx + self.width / 2
-        y2 = cy + self.height / 2
+        y2 = cy + h / 2
         return [x1, y1, x2, y2]
 
     @property

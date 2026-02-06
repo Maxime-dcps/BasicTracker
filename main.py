@@ -5,16 +5,16 @@ from stantard_eval import run_standard_eval
 def main():
 
     MOT15_path = [
-        "ADL-Rundle-6", 
-        "ADL-Rundle-8", 
-        "ETH-Bahnhof", 
-        "ETH-Pedcross2", 
-        "ETH-Sunnyday", 
-        "KITTI-13", 
-        "KITTI-17", 
-        "PETS09-S2L1", 
-        "TUD-Campus", 
-        "TUD-Stadtmitte", 
+        # "ADL-Rundle-6", 
+        # "ADL-Rundle-8", 
+        # "ETH-Bahnhof", 
+        # "ETH-Pedcross2", 
+        # "ETH-Sunnyday", 
+        # "KITTI-13", 
+        # "KITTI-17", 
+        # "PETS09-S2L1", 
+        # "TUD-Campus", 
+        # "TUD-Stadtmitte", 
         "Venice-2"
     ]
     data_path = "dataset/MOT15/train"
