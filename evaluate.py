@@ -74,6 +74,7 @@ def evaluate(gt_path, res_path, iou_threshold=0.5):
     print(f"ID Switches: {total_idsw}")
     print(f"Total GT Objects: {total_gt_objects}")
 
+    return mota, total_fn, total_fp, total_idsw, total_gt_objects
 
 if __name__ == "__main__":
     evaluate("dataset/MOT15/train/PETS09-S2L1/gt/gt.txt", "results/results.txt")
